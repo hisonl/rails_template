@@ -39,6 +39,7 @@ gem 'settingslogic'
 # DB
 gem 'mysql2'
 gem 'activerecord-mysql-unsigned'
+gem 'pg'
 
 # uploader
 gem 'carrierwave'

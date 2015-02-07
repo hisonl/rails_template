@@ -15,7 +15,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 
 # CSS Support
-gem 'less-rails'
+# gem 'less-rails'
 
 # form Builders
 gem 'simple_form'

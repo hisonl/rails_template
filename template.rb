@@ -104,7 +104,7 @@ run "echo 'export PATH=,/bin:./bin:$PATH' >> .envrc; direnv allow ."
 run 'bundle install --binstubs=,/bin'
 
 # authentication
-if yes?('make user authentication (and authorization) ?')
+if yes?('use devise and cancancan[yes] ?')
   gem 'devise'
   gem 'cancancan'
   run 'bundle install'

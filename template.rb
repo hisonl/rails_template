@@ -98,16 +98,16 @@ end
 CODE
 
 # redis
-gems[:redis] = yes?("Would you like to use redis?")
-if gems[:redis]
-  gem 'redis'
-
-  # sidekiq
-  gems[:sidekiq] = yes?("Would you like to use sidekiq?")
-  if gems[:sidekiq]
-    gem 'sidekiq'
-  end
-end
+# gems[:redis] = yes?("Would you like to use redis?")
+# if gems[:redis]
+#   gem 'redis'
+#
+#   # sidekiq
+#   gems[:sidekiq] = yes?("Would you like to use sidekiq?")
+#   if gems[:sidekiq]
+#     gem 'sidekiq'
+#   end
+# end
 
 # direnv settings
 run "echo 'export PATH=,/bin:./bin:$PATH' >> .envrc; direnv allow ."

@@ -187,11 +187,11 @@ generate 'kaminari:config'
 
 # Database
 run 'rm -rf config/database.yml'
-if yes?('Use MySQL?([yes] else PostgreSQL)')
-  run "wget #{@repo_url}/config/mysql/database.yml -P config/"
-else
+if yes?('Use PostgreSQL?([yes] else MySQL)')
   run "wget #{@repo_url}/config/postgresql/database.yml -P config/"
   run "createuser #{@app_name} -s"
+else
+  run "wget #{@repo_url}/config/mysql/database.yml -P config/"
 end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 gsub_file 'config/database.yml', /ENVNAME/, @env_name

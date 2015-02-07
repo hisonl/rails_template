@@ -193,6 +193,7 @@ else
   run "createuser #{@app_name} -s"
 end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
+gsub_file 'config/database.yml', /ENVNAME/, @app_name.upcase
 run 'bundle exec rake RAILS_ENV=development db:create'
 
 # guard

@@ -235,8 +235,15 @@ insert_into_file 'spec/spec_helper.rb',%(
     DatabaseCleaner.clean
   end
 ), after: 'RSpec.configure do |config|'
-
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
+
+# setting unicorn
+run "touch config/unicorn.rb"
+insert_into_file 'config/unicorn.rb', %(
+  worker_processes 2
+  listen 3000
+  timeout 300
+)
 
 # .gitignore
 remove_file '.gitignore'

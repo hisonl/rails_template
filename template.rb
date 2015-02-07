@@ -195,6 +195,9 @@ end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'bundle exec rake RAILS_ENV=development db:create'
 
+# guard
+run 'bundle exec guard init'
+
 # Rspec/Spring/Guard
 # ----------------------------------------------------------------
 # Rspec

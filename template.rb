@@ -20,8 +20,6 @@ gem 'less-rails'
 # form Builders
 gem 'simple_form'
 
-gem 'therubyracer'
-
 # turbolinks support
 gem 'jquery-turbolinks'
 

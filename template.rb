@@ -77,7 +77,7 @@ gem_group :development do
   gem 'bullet'
 end
 
-group :test do
+gem_group :test do
   gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'

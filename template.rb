@@ -184,7 +184,6 @@ generate 'kaminari:config'
 run 'rm -rf config/database.yml'
 if yes?('Use MySQL?([yes] else PostgreSQL)')
   run "wget #{@repo_url}/config/mysql/database.yml -P config/"
-  rake 'db:create db:migrate'
 else
   run "wget #{@repo_url}/config/postgresql/database.yml -P config/"
   run "createuser #{@app_name} -s"
@@ -218,7 +217,7 @@ insert_into_file 'spec/spec_helper.rb',%(
       c.allow_http_connections_when_no_cassette = true
   end
 ), after: 'RSpec.configure do |config|'
-
+p "ここまで"
 insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_girl_rails'", after: "require 'rspec/rails'"
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 

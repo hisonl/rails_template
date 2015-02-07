@@ -1,6 +1,7 @@
 # include settings
 @repo_url = 'https://raw.githubusercontent.com/hisonl/rails_template/master'
 @app_name = app_name
+@env_name = @app_name.upcase
 
 # clean file
 run 'rm README.rdoc'
@@ -193,7 +194,7 @@ else
   run "createuser #{@app_name} -s"
 end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
-gsub_file 'config/database.yml', /ENVNAME/, @app_name.upcase
+gsub_file 'config/database.yml', /ENVNAME/, @env_name
 run 'bundle exec rake RAILS_ENV=development db:create'
 
 # guard

@@ -5,6 +5,9 @@
 # clean file
 run 'rm README.rdoc'
 
+# add to Gemfile
+append_file 'Gemfile', <<-CODE
+
 # view
 gem 'slim-rails'
 gem 'erb2slim'
@@ -46,7 +49,7 @@ gem 'aws-sdk'
 # pagination
 gem 'kaminari'
 
-gem_group :development, :test do
+group :development, :test do
   # pry
   gem 'pry-rails'
   gem 'pry-doc'
@@ -66,7 +69,7 @@ gem_group :development, :test do
   gem 'better_errors'
 end
 
-gem_group :development do
+group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-bundler'
@@ -77,7 +80,7 @@ gem_group :development do
   gem 'bullet'
 end
 
-gem_group :test do
+group :test do
   gem 'faker'
   gem 'capybara'
   gem 'database_cleaner'
@@ -89,10 +92,11 @@ gem_group :test do
   gem 'rspec-json_matcher'
 end
 
-gem_group :production, :staging do
+group :production, :staging do
   # for Heroku
   gem 'rails_12factor'
 end
+CODE
 
 # direnv settings
 run "echo 'export PATH=,/bin:./bin:$PATH' >> .envrc; direnv allow ."

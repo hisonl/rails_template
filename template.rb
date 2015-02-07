@@ -10,7 +10,6 @@ append_file 'Gemfile', <<-CODE
 
 # view
 gem 'slim-rails'
-gem 'erb2slim'
 gem 'active_link_to'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -166,9 +165,6 @@ insert_into_file 'config/environments/development.rb',%(
 
 # set Japanese locale
 run 'wget https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/ja.yml -P config/locales/'
-
-# erb => slim
-run 'bundle exec erb2slim -d app/views'
 
 # Bootstrap/Bootswach/Font-Awesome
 run 'rm -rf app/assets/stylesheets/application.css'

@@ -103,6 +103,21 @@ run "echo 'export PATH=,/bin:./bin:$PATH' >> .envrc; direnv allow ."
 # install gems
 run 'bundle install --binstubs=,/bin'
 
+# authentication
+if yes?('use devise and cancancan[yes] ?')
+  gem 'devise'
+  gem 'cancancan'
+  run 'bundle install'
+
+  generate 'devise:install'
+  model_name = ask("What would you like the user model to be called? [user]")
+  model_name = "user" if model_name.blank?
+  generate "devise", model_name
+  rake 'db:migrate'
+
+  generate 'cancan:ability'
+end
+
 # set config/application.rb
 application  do
   %q{
@@ -169,27 +184,13 @@ generate 'kaminari:config'
 run 'rm -rf config/database.yml'
 if yes?('Use MySQL?([yes] else PostgreSQL)')
   run "wget #{@repo_url}/config/mysql/database.yml -P config/"
+  rake 'db:create db:migrate'
 else
   run "wget #{@repo_url}/config/postgresql/database.yml -P config/"
   run "createuser #{@app_name} -s"
 end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 run 'bundle exec rake RAILS_ENV=development db:create'
-
-# authentication
-if yes?('use devise and cancancan[yes] ?')
-  gem 'devise'
-  gem 'cancancan'
-  run 'bundle install'
-
-  generate 'devise:install'
-  model_name = ask("What would you like the user model to be called? [user]")
-  model_name = "user" if model_name.blank?
-  generate "devise", model_name
-  rake 'db:migrate'
-
-  generate 'cancan:ability'
-end
 
 # Rspec/Spring/Guard
 # ----------------------------------------------------------------

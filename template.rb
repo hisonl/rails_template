@@ -212,7 +212,7 @@ unless @use_postgre
       alias_method_chain :create_table, :innodb_row_format
     end
   end
-end), before: ''
+  end), before: ''
 end
 
 # guard

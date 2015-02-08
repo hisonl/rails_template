@@ -198,7 +198,7 @@ gsub_file 'config/database.yml', /APPNAME/, @app_name
 gsub_file 'config/database.yml', /ENVNAME/, @env_name
 
 # MySQL settings
-if @use_postgre
+unless @use_postgre
   run "touch config/initializers/innodb_row_format.rb"
   insert_into_file 'config/initializers/innodb_row_format.rb', %(ActiveSupport.on_load :active_record do
     module ActiveRecord::ConnectionAdapters
@@ -256,7 +256,8 @@ insert_into_file 'spec/spec_helper.rb', %(
 gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # rake db:create db:migrate
-run 'bundle exec rake RAILS_ENV=development db:create db:migrate'
+run 'bundle exec rake RAILS_ENV=development db:create'
+run 'bundle exec db:migrate'
 
 # setting unicorn
 run "touch config/unicorn.rb"

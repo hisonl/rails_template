@@ -201,19 +201,18 @@ gsub_file 'config/database.yml', /ENVNAME/, @env_name
 unless @use_postgre
   run "touch config/initializers/innodb_row_format.rb"
   insert_into_file 'config/initializers/innodb_row_format.rb', %(ActiveSupport.on_load :active_record do
-    module ActiveRecord::ConnectionAdapters
-      module SchemaStatements
-        def create_table_with_innodb_row_format(table_name, options = {})
-          table_options = options.merge(options: "ENGINE=InnoDB ROW_FORMAT=COMPRESSED")
-          create_table_without_innodb_row_format(table_name, table_options) do |td|
-            yield td if block_given?
-          end
+  module ActiveRecord::ConnectionAdapters
+    module SchemaStatements
+      def create_table_with_innodb_row_format(table_name, options = {})
+        table_options = options.merge(options: "ENGINE=InnoDB ROW_FORMAT=COMPRESSED")
+        create_table_without_innodb_row_format(table_name, table_options) do |td|
+          yield td if block_given?
         end
-        alias_method_chain :create_table, :innodb_row_format
       end
+      alias_method_chain :create_table, :innodb_row_format
     end
   end
-  ), before: ''
+  end), before: ''
 end
 
 # guard

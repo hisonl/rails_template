@@ -211,7 +211,7 @@ module ActiveRecord::ConnectionAdapters
 end
 ), before: ''
 run 'bundle exec rake RAILS_ENV=development db:create'
-run 'bundle exac rake db:migrate'
+run 'bundle exec rake db:migrate'
 
 # guard
 run 'bundle exec guard init'

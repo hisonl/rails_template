@@ -115,7 +115,6 @@ unless no?('does not use devise and cancancan[no] ?')
   model_name = ask("What would you like the user model to be called? [user]")
   model_name = "user" if model_name.blank?
   generate "devise", model_name
-  rake 'db:migrate'
 
   generate 'cancan:ability'
 end
@@ -195,7 +194,6 @@ else
 end
 gsub_file 'config/database.yml', /APPNAME/, @app_name
 gsub_file 'config/database.yml', /ENVNAME/, @env_name
-run 'bundle exec rake RAILS_ENV=development db:create'
 
 # MySQL settings
 run "touch config/initializers/innodb_row_format.rb"
@@ -212,6 +210,8 @@ module ActiveRecord::ConnectionAdapters
   end
 end
 ), before: ''
+run 'bundle exec rake RAILS_ENV=development db:create'
+run 'bundle exac rake db:migrate'
 
 # guard
 run 'bundle exec guard init'

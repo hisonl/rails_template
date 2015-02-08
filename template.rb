@@ -124,8 +124,7 @@ remove_dir 'test'
 
 # set config/application.rb
 application  do
-  %q{
-    # Set timezone
+  %q{# Set timezone
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 

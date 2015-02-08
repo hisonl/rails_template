@@ -257,7 +257,7 @@ gsub_file 'spec/spec_helper.rb', "require 'rspec/autorun'", ''
 
 # rake db:create db:migrate
 run 'bundle exec rake RAILS_ENV=development db:create'
-run 'bundle exec db:migrate'
+run 'bundle exec rake db:migrate'
 
 # setting unicorn
 run "touch config/unicorn.rb"

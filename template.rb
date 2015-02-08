@@ -150,8 +150,7 @@ application  do
 
     # libファイルの自動読み込み
     config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
-  }
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]}
 end
 
 # For Bullet (N+1 Problem)

@@ -272,6 +272,9 @@ get "#{@repo_url}/gitignore", '.gitignore'
 # .pryrc
 get "#{@repo_url}/pryrc", '.pryrc'
 
+# ctags
+run "ctags -R"
+
 # git initalize setting
 after_bundle do
   git :init

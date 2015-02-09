@@ -1,6 +1,7 @@
 # include settings
 @repo_url = 'https://raw.githubusercontent.com/hisonl/rails_template/master'
-@app_name = app_name
+@app_name = File.basename(Dir::pwd) if app_name == "."
+@app_name ||= app_name
 @env_name = @app_name.upcase
 
 # clean file

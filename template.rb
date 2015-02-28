@@ -15,9 +15,10 @@ gem 'slim-rails'
 gem 'active_link_to'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails'
 
 # CSS Support
-# gem 'less-rails'
+gem 'less-rails'
 
 # form Builders
 gem 'simple_form'

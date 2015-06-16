@@ -38,6 +38,7 @@ gem 'unicorn'
 # settings
 gem 'dotenv-rails'
 gem 'settingslogic'
+gem 'annotate'
 
 # DB
 gem 'mysql2'
